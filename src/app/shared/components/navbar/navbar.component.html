@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<ng-container>
+  <mat-toolbar class="toolbar">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <a mat-button class="toolbar__link" routerLink="/">
+      <span>Movies App</span>
+    </a>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button class="toolbar__link" routerLink="/movies">Películas</a>
+      <a mat-button class="toolbar__link" routerLink="/actors">Actores</a>
+      <a mat-button class="toolbar__link" routerLink="/studios">Estudios</a>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav" fxFlexFill>
+    <mat-sidenav #sidenav mode="over" fxHide.gt-sm="true" role="navigation">
+      <div fxLayout="column">
+        <a mat-button class="toolbar__link" routerLink="/movies">Películas</a>
+        <a mat-button class="toolbar__link" routerLink="/actors">Actores</a>
+        <a mat-button class="toolbar__link" routerLink="/studios">Estudios</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav__content" fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
