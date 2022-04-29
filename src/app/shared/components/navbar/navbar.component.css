@@ -1,0 +1,19 @@
+.toolbar {
+  height: 7vh;
+}
+
+.toolbar__link {
+  text-decoration: none;
+  font-size: 110%;
+  white-space: normal;
+}
+
+.sidenav {
+  background-color: lightskyblue;
+  min-height: 93vh !important;
+}
+
+.sidenav__content {
+    font-size: 200%;
+    text-align: center;
+}
