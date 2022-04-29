@@ -5,6 +5,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { MoviesRoutingModule } from './movies-routing.module';
+import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 
 
 
@@ -17,7 +18,8 @@ import { MoviesRoutingModule } from './movies-routing.module';
   ],
   imports: [
     CommonModule,
-    MoviesRoutingModule
+    MoviesRoutingModule,
+    MaterialModule
   ]
 })
 export class MoviesModule { }
