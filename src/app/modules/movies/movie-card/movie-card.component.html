@@ -1,1 +1,13 @@
-<p>movie-card works!</p>
+<mat-card class="card" *ngIf="movie">
+  <mat-card-header class="card__header">
+    <mat-card-title class="card__title">{{movie.title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card__content">
+    <img class="card__img" mat-card-image src="http://dummyimage.com/400x600.png/dddddd/000000" alt="Photo of a Shiba Inu">
+  </mat-card-content>
+  <mat-card-footer class="card__footer">
+    <ng-container *ngFor="let genre of movie.genre">
+      <span class="card__genre">#{{genre}} </span>
+    </ng-container>
+  </mat-card-footer>
+</mat-card>

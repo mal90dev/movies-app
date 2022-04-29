@@ -1,1 +1,7 @@
-<p>movies-screen works!</p>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="10px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies">
+      <app-movie-card [movie]="movie"></app-movie-card>
+    </div>
+  </div>
+</div>

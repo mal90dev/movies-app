@@ -5,13 +5,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 
 const materialModules = [
   MatToolbarModule,
   MatSidenavModule,
   MatButtonModule,
   FlexLayoutModule,
-  MatIconModule
+  MatIconModule,
+  MatCardModule
 ];
 
 @NgModule({
