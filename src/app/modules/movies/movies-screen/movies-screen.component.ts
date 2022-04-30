@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Movie } from 'src/app/core/models/movie';
 import { MoviesService } from 'src/app/core/providers/movies/movies.service';
 
@@ -11,13 +11,19 @@ export class MoviesScreenComponent {
 
   movies: Movie[] = [];
   movie!: Movie;
+  contentLoaded: boolean = false;
 
   constructor(private readonly movieService: MoviesService) {
     this.movieService.getMovies().subscribe( (movies: Movie[])  => {
+      this.contentLoaded = true;
       console.log(movies);
       this.movies = movies;
       this.movie = movies[0];
     });
+  }
+
+  counter(i: number): Array<number> {
+    return new Array(i);
   }
 
 

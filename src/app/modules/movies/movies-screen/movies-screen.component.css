@@ -5,3 +5,8 @@
 .content > mat-card {
   width: 200px;
 }
+
+/* :host >>> ngx-skeleton-loader .loader {
+  height: 50px;
+  background-color: #b9b9b9;
+} */

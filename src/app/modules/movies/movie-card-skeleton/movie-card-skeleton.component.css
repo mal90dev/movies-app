@@ -3,7 +3,7 @@
 }
 
 .card__header {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .card__title {
@@ -11,9 +11,14 @@
   min-height: 40px;
 }
 
+.card__content {
+  margin-bottom: 0px;
+}
+
 .card__img {
   margin: 0px;
   width: 100%;
+  margin-bottom: 0px;
 }
 
 .card__genre {
@@ -21,10 +26,15 @@
 }
 
 .card__footer {
+  padding-bottom: 10px;
   min-height: 40px;
 }
 
 /* Material styles */
 ::ng-deep .mat-card-header-text {
   margin: 0px 5px !important;
+}
+
+.mat-card-header {
+  /* display: contents; */
 }
