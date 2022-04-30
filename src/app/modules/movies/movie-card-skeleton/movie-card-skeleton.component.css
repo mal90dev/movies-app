@@ -3,7 +3,8 @@
 }
 
 .card__header {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
 }
 
 .card__title {
@@ -12,7 +13,11 @@
 }
 
 .card__content {
+  max-height: 600px;
+  max-width: 400px;
   margin-bottom: 0px;
+  height: 70vh;
+  overflow: hidden;
 }
 
 .card__img {
@@ -26,7 +31,7 @@
 }
 
 .card__footer {
-  padding-bottom: 10px;
+  padding-top: 15px;
   min-height: 40px;
 }
 
@@ -35,6 +40,7 @@
   margin: 0px 5px !important;
 }
 
-.mat-card-header {
-  /* display: contents; */
+/* ngx-skeleton-loader styles */
+:host >>> ngx-skeleton-loader .loader {
+  margin-bottom: 0px;
 }
