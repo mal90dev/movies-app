@@ -2,8 +2,8 @@
   <mat-card-header class="card__header">
     <mat-card-title class="card__title">{{movie.title}}</mat-card-title>
   </mat-card-header>
-  <mat-card-content class="card__content">
-    <img class="card__img" src="http://dummyimage.com/400x600.png/dddddd/000000" alt="Photo of a Shiba Inu">
+  <mat-card-content class="card__content" (click)="handleMovieDetail(movie.id)">
+    <img class="card__img" [src]="movie.poster" [alt]="movie.title">
   </mat-card-content>
   <mat-card-footer class="card__footer">
     <ng-container *ngFor="let genre of movie.genre">

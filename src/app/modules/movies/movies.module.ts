@@ -8,6 +8,7 @@ import { MoviesRoutingModule } from './movies-routing.module';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MovieCardSkeletonComponent } from './movie-card-skeleton/movie-card-skeleton.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -23,7 +24,8 @@ import { MovieCardSkeletonComponent } from './movie-card-skeleton/movie-card-ske
     CommonModule,
     MoviesRoutingModule,
     MaterialModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    SharedModule
   ]
 })
 export class MoviesModule { }

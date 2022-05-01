@@ -1,1 +1,61 @@
-<p>movie-detail works!</p>
+<div fxLayout="row" fxLayout.xs="column" class="movie" *ngIf="movie && actors && companies">
+
+  <div fxLayout="column" fxFlex="30%" fxFlex.md="40%" fxFlex.xs="100%" class="movie__column">
+    <div fxFlex="30%" fxLayoutAlign="left center" fxFlexFill class="movie__title">
+      <h1>{{movie.title}}</h1>
+    </div>
+    <div>
+      <img fxFlex="70%" fxFlex.xs="95%" class="card__img" [src]="movie.poster" [alt]="movie.title" fxFlexFill>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxFlex.xs="100%" fxFlex.md="60%" fxFlex="70%" class="movie__column">
+
+    <div fxLayout="column" fxLayout.xs="row" fxFlex="10%"  class="movie__statistics">
+
+      <div fxFlex="100%" fxLayoutAlign="left"  class="">
+        <h3>Puntuación: </h3>
+        <span class="movie__statistics-value">
+          {{movie.imdbRating}}
+        </span>
+      </div>
+
+      <div fxFlex="100%" fxLayoutAlign="left"  class="">
+        <h3>Duración: </h3>
+        <span class="movie__statistics-value">
+          {{movie.duration}}
+        </span>
+      </div>
+
+    </div>
+
+    <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" class="movie__item">
+      <h2 class="movie__title-item">Actores</h2>
+      <hr>
+      <div class="movie__actors">
+        <ul class="movie__item-list">
+          <li *ngFor="let actor of movie.actors">
+            {{ actor | pipeActor:actors }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="movie__item">
+      <h2 class="movie__title-item">Estudio</h2>
+      <hr/>
+      <span class="card__genre">{{ movie.id | pipeCompany:companies }} </span>
+    </div>
+  
+    <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="movie__genres">
+      <h2 class="movie__title-item">Géneros</h2>
+      <hr/>
+      <ul class="movie__item-list">
+        <li *ngFor="let genre of movie.genre">
+          #{{genre}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
