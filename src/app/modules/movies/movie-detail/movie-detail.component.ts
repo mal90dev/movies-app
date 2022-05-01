@@ -6,6 +6,7 @@ import { Actor } from '../../../core/models/actor';
 import { Movie } from '../../../core/models/movie';
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { CompaniesService } from '../../../core/providers/companies/companies.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,7 +16,7 @@ import { CompaniesService } from '../../../core/providers/companies/companies.se
 export class MovieDetailComponent {
 
   movieId: number;
-  movie!: Movie;
+  movie!: Movie | undefined;
   actors!: Actor[];
   companies!: Company[];
 
@@ -27,33 +28,58 @@ export class MovieDetailComponent {
     this.getMovie();
     this.getActors();
     this.getCompanies();
-    console.log(this.movieId);
   }
 
   getIdParam(): number {
     return this.activatedRoute.snapshot.params['id'];
   }
 
-  getMovie() {
-    this.moviesService.getMovieById(this.movieId).subscribe( (movie: Movie) => {
-      console.log(movie);
-      this.movie = movie;
+  getMovie(): void {
+    this.movie = undefined;
+    this.moviesService.getMovieById(this.movieId).subscribe({
+      next: (movie: Movie) => {        
+        if ( movie ) {
+          this.movie = movie;
+        } else {
+          Swal.fire('info', 'No se ha encontrado la película', 'info');
+        }
+      },
+      error: error => {       
+        Swal.fire('error', 'Error al cargar los datos ' + error.statusText, 'error');
+      }
     });
   }
 
-  getActors() {
-    this.actorsService.getActors().subscribe( (actors: Actor[]) => {
-      console.log(actors);
-      this.actors = actors;
+  getActors(): void {
+    this.actors = [];
+    this.actorsService.getActors().subscribe({
+      next: (actors: Actor[]) => {
+        if ( actors?.length > 0 ) {
+          this.actors = actors;
+        } else {
+          Swal.fire('info', 'No se ha encontrado actores', 'info');
+        }
+      },
+      error: error => {       
+        Swal.fire('error', 'Error al cargar los datos ' + error.statusText, 'error');
+      }
     });
   }
 
-  getCompanies() {
-    this.companiesService.getCompanies().subscribe( (companies: Company[]) => {
-      console.log('companies: ', companies);
-      this.companies = companies;
+  getCompanies(): void {
+    this.companies = [];
+    this.companiesService.getCompanies().subscribe({
+      next: (companies: Company[]) => {
+        if ( companies?.length > 0 ) {
+          this.companies = companies;
+        } else {
+          Swal.fire('info', 'No se ha encontrado estudios', 'info');
+        }
+      },
+      error: error => {       
+        Swal.fire('error', 'Error al cargar los datos ' + error.statusText, 'error');
+      }
     });
   }
-
 
 }

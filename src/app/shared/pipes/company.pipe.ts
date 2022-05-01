@@ -7,7 +7,7 @@ import { Company } from '../../core/models/company';
 export class CompanyPipe implements PipeTransform {
 
   transform(id: number, listCompanies: Company[]): string {
-    let companyName = '';
+    let companyName = 'desconocido';
     listCompanies.find( (company: Company) => {
       if( company.id === id ) {
         companyName = company.name;
