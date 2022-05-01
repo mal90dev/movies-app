@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Movie } from '../../models/movie';
 
 @Injectable({
@@ -19,5 +19,10 @@ export class MoviesService {
   getMovieById(movieId: number): Observable<Movie>{
     return this.http.get<Movie>(this.basePath + '/movies/' + movieId);
   }
+
+  // getError() {
+  //   const error = new HttpErrorResponse({ status: 400 });
+  //   return throwError(error) as any;
+  // }
 
 }
