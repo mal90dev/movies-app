@@ -8,11 +8,16 @@ import { Movie } from '../../models/movie';
 })
 export class MoviesService {
 
-  private url = 'http://localhost:3000';
+  private basePath = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getMovies(): Observable<Movie[]>{
-    return this.http.get<Movie[]>(this.url + '/movies');
+    return this.http.get<Movie[]>(this.basePath + '/movies');
   }
+
+  getMovieById(movieId: number): Observable<Movie>{
+    return this.http.get<Movie>(this.basePath + '/movies/' + movieId);
+  }
+
 }

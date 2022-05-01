@@ -6,6 +6,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 const materialModules = [
   MatToolbarModule,
@@ -13,7 +15,9 @@ const materialModules = [
   MatButtonModule,
   FlexLayoutModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  MatDividerModule,
+  MatListModule
 ];
 
 @NgModule({

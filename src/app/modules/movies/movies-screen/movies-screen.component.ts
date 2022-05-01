@@ -16,7 +16,6 @@ export class MoviesScreenComponent {
   constructor(private readonly movieService: MoviesService) {
     this.movieService.getMovies().subscribe( (movies: Movie[])  => {
       this.contentLoaded = true;
-      console.log(movies);
       this.movies = movies;
       this.movie = movies[0];
     });

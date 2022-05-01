@@ -1,0 +1,49 @@
+.movie {
+  padding: 5px;
+  font-size: 15px;
+}
+
+.movie__title {
+  margin-left: 5px;
+}
+
+.movie__column {
+  margin: 15px 0px 0px 15px;
+}
+
+.movie__statistics {
+  margin-top: 50px;
+}
+
+hr {
+  width: 50%;               
+  background-color:gray;
+  margin-left: 0px;
+}
+
+.movie__title-item {
+  margin-bottom: 0px;
+}
+
+.movie__item-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.movie__statistics {
+  margin-bottom: 30px;
+}
+
+.movie__statistics-value {
+  margin-top: 4px;
+}
+
+.movie__genres {
+  padding-bottom: 70px;
+}
+
+.card__img {
+  /* padding: 0px; */
+}
