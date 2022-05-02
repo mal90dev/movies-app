@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from '../../../core/models/company';
 import { ActorsService } from '../../../core/providers/actors/actors.service';
 import { Actor } from '../../../core/models/actor';
@@ -23,9 +23,11 @@ export class MovieDetailComponent {
   constructor( private activatedRoute: ActivatedRoute,
                private moviesService: MoviesService,
                private actorsService: ActorsService,
-               private companiesService: CompaniesService ) {
+               private companiesService: CompaniesService,
+               private router: Router ) {
     
     this.movieId = this.getIdParam();
+    this.actors = [];
     this.getMovie();
     this.getActors();
     this.getCompanies();
@@ -52,7 +54,6 @@ export class MovieDetailComponent {
   }
 
   getActors(): void {
-    this.actors = [];
     this.actorsService.getActors().subscribe({
       next: (actors: Actor[]) => {
         if ( actors?.length > 0 ) {
@@ -84,12 +85,19 @@ export class MovieDetailComponent {
   }
 
   handleEditMovie(): void {
-    console.log('Editar película');
+    this.router.navigate(['movies/edit', this.movie?.id]);
   }
 
   handleRemoveMovie(): void {
-    console.log('Eliminar película');
-    
+    this.moviesService.deleteMovie(this.movie?.id!).subscribe({
+      next: () => {
+        Swal.fire('success', 'Película eliminada', 'success');
+        this.router.navigate(['movies']);
+      },
+      error: error => {
+        Swal.fire('error', 'Error al eliminar la película ' + error.statusText, 'error');
+      }
+    });    
   }
 
 }
