@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -12,7 +13,6 @@ import { Movie } from '../../../core/models/movie';
 import { Actor } from '../../../core/models/actor';
 import { ActorSelect } from '../../../core/models/actorSelect';
 import { Genre } from '../../../core/models/genreSelect';
-import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -35,7 +35,8 @@ export class NewMovieComponent implements OnInit {
 
   constructor(private moviesService: MoviesService,
               private actorsService:ActorsService,
-              private activatedRoute: ActivatedRoute ) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router ) {
     this.movieId = this.getIdParam();
     this.initFormGroup();
     this.getActors();
@@ -56,19 +57,17 @@ export class NewMovieComponent implements OnInit {
   getMovie(): void {
     this.movie = undefined;
     this.moviesService.getMovieById(this.movieId).subscribe({
-      next: (movie: Movie) => {        
+      next: (movie: Movie) => {
         if ( movie ) {
           this.movie = movie;
         } else {
           Swal.fire('info', 'No se ha encontrado la película', 'info');
         }
       },
-      error: error => {       
+      error: error => {
         Swal.fire('error', 'Error al cargar los datos ' + error.statusText, 'error');
-      }, 
+      },
       complete: () => {
-        console.log('movie', this.movie);
-        
         this.loadFormGroup();
       }
     });
@@ -113,7 +112,6 @@ export class NewMovieComponent implements OnInit {
     return actors;
   }
 
-
   getIdParam(): number {
     return this.activatedRoute.snapshot.params['id'];
   }
@@ -131,11 +129,7 @@ export class NewMovieComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    this.addMovie();
-  }
-
-  addMovie(): void {
+  onSubmit(): void {
     const movie: Movie = {
       title: this.movieGroup.get('title')!.value,
       poster: this.movieGroup.get('poster')!.value,
@@ -145,25 +139,35 @@ export class NewMovieComponent implements OnInit {
       duration: this.movieGroup.get('duration')!.value,
       imdbRating: this.movieGroup.get('rating')!.value
     };
-    
     if (!this.movieId) {
-      this.moviesService.createMovie(movie).subscribe( response => {
-        if (response) {
-          Swal.fire('Success', 'Película añadida correctamente', 'success');
-        } else {
-          Swal.fire('Error', 'Ha habido algún problema', 'error');
-        }
-      });
+      this.createMovie(movie);
     } else {
-      this.moviesService.updateMovie(movie, this.movieId).subscribe( response => {
-        if (response) {
-          Swal.fire('Success', 'Película actualizada correctamente', 'success');
-        } else {
-          Swal.fire('Error', 'Ha habido algún problema', 'error');
-        }
-      });
+      this.updateMovie(movie);
     }
+  }
 
+  createMovie(movie: Movie): void {
+    this.moviesService.createMovie(movie).subscribe({
+      next: (movie: Movie) => {
+        Swal.fire('Success', 'Película añadida correctamente', 'success');
+        this.router.navigate(['movies']);
+      },
+      error: error => {       
+        Swal.fire('Error', 'Ha habido algún problema ' + error.statusText, 'error');
+      }
+    });
+  }
+
+  updateMovie(movie: Movie): void {
+    this.moviesService.updateMovie(movie, this.movieId).subscribe({
+      next: (movie: Movie) => {
+        Swal.fire('success', 'Se ha actualizado correctamente', 'success');
+        this.router.navigate(['movies/detail', movie.id]);
+      },
+      error: error => {       
+        Swal.fire('error', 'Error al actualizar la película ' + error.statusText, 'error');
+      }
+    });
   }
 
   getActors(): void {

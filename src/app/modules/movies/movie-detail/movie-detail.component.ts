@@ -27,6 +27,7 @@ export class MovieDetailComponent {
                private router: Router ) {
     
     this.movieId = this.getIdParam();
+    this.actors = [];
     this.getMovie();
     this.getActors();
     this.getCompanies();
@@ -53,7 +54,6 @@ export class MovieDetailComponent {
   }
 
   getActors(): void {
-    this.actors = [];
     this.actorsService.getActors().subscribe({
       next: (actors: Actor[]) => {
         if ( actors?.length > 0 ) {
@@ -89,8 +89,15 @@ export class MovieDetailComponent {
   }
 
   handleRemoveMovie(): void {
-    console.log('Eliminar película');
-    
+    this.moviesService.deleteMovie(this.movie?.id!).subscribe({
+      next: () => {
+        Swal.fire('success', 'Película eliminada', 'success');
+        this.router.navigate(['movies']);
+      },
+      error: error => {
+        Swal.fire('error', 'Error al eliminar la película ' + error.statusText, 'error');
+      }
+    });    
   }
 
 }
