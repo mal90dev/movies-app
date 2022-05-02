@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { Movie } from '../../../core/models/movie';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies-screen',
@@ -15,7 +16,8 @@ export class MoviesScreenComponent {
   contentLoaded: boolean = false;
   subscription!: Subscription;
 
-  constructor(private readonly movieService: MoviesService) {
+  constructor(private movieService: MoviesService,
+              private router: Router) {
     this.getMovies();
   }
 
@@ -38,6 +40,10 @@ export class MoviesScreenComponent {
 
   counter(i: number): Array<number> {
     return new Array(i);
+  }
+
+  handleCreateMovie(): void {
+    this.router.navigate(['movies/new-movie']);
   }
 
 }

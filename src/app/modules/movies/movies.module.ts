@@ -9,6 +9,7 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MovieCardSkeletonComponent } from './movie-card-skeleton/movie-card-skeleton.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -25,7 +26,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MoviesRoutingModule,
     MaterialModule,
     NgxSkeletonLoaderModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class MoviesModule { }
