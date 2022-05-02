@@ -24,6 +24,7 @@ export class MovieDetailComponent {
                private moviesService: MoviesService,
                private actorsService: ActorsService,
                private companiesService: CompaniesService ) {
+    
     this.movieId = this.getIdParam();
     this.getMovie();
     this.getActors();
@@ -80,6 +81,15 @@ export class MovieDetailComponent {
         Swal.fire('error', 'Error al cargar los datos ' + error.statusText, 'error');
       }
     });
+  }
+
+  handleEditMovie(): void {
+    console.log('Editar película');
+  }
+
+  handleRemoveMovie(): void {
+    console.log('Eliminar película');
+    
   }
 
 }

@@ -10,6 +10,10 @@
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies">
         <app-movie-card [movie]="movie"></app-movie-card>
       </div>
+      <div class="movie__icons-group">
+        <mat-icon (click)="handleCreateMovie()"
+          class="movie__icon" aria-hidden="false" aria-label="Example home icon">add_circle</mat-icon>
+      </div>
     </ng-template>
 
     <ng-template #skeleton>

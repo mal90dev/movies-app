@@ -1,1 +1,89 @@
-<p>new-movie works!</p>
+<div class="new-movie">
+
+  <form class="movie__form" [formGroup]="movieGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field class="movie__form-field">
+      <mat-label>Título</mat-label>
+      <input matInput placeholder="Título" formControlName="title">
+    </mat-form-field>
+  
+    <mat-form-field class="movie__form-field">
+      <mat-label>Póster (url)</mat-label>
+      <input matInput placeholder="Póster (url)" formControlName="poster">
+    </mat-form-field>
+
+    <!-- <mat-form-field class="movie__form-field">
+      <mat-label>Géneros</mat-label>
+      <input matInput placeholder="Géneros" formControlName="genre">
+    </mat-form-field> -->
+
+    <mat-form-field class="movie__form-field">
+      <mat-label>Géneros</mat-label>
+      <mat-chip-list #chipListGenre aria-label="Genre selection">
+        <mat-chip *ngFor="let genre of genres" (removed)="removeGenre(genre)">
+          {{genre.name}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input 
+          formControlName="genre"
+          placeholder="Nuevo género"
+          [matChipInputFor]="chipListGenre"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          matChipInputAddOnBlur="true"
+          (matChipInputTokenEnd)="addGenre($event)">
+      </mat-chip-list>
+    </mat-form-field>
+
+    <mat-form-field class="movie__form-field">
+      <mat-label>Actores</mat-label>
+      <mat-chip-list #chipList aria-label="Actor selection">
+        <mat-chip
+          *ngFor="let actor of actors"
+          (removed)="remove(actor)">
+          {{actor.fullName}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input
+          placeholder="New actor..."
+          #actorInput
+          formControlName="actors"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let actor of allActors" [value]="actor.id">
+          {{actor.fullName}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="movie__form-field">
+      <mat-label>Estudio</mat-label>
+      <input matInput placeholder="Estudio" formControlName="studio">
+    </mat-form-field>
+
+    <mat-form-field class="movie__form-field">
+      <mat-label>Año</mat-label>
+      <input matInput placeholder="Año" formControlName="year">
+    </mat-form-field>
+
+    <mat-form-field class="movie__form-field">
+      <mat-label>Duración</mat-label>
+      <input matInput placeholder="Duración" formControlName="duration">
+    </mat-form-field>
+
+    <mat-form-field class="movie__form-field">
+      <mat-label>Puntuación</mat-label>
+      <input matInput placeholder="Puntuación" formControlName="rating">
+    </mat-form-field>
+
+    <button type="submit"
+      class="new-movie__button" mat-raised-button color="warn">Guardar</button>
+  </form>
+
+</div>

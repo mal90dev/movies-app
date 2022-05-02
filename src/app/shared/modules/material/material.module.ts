@@ -8,6 +8,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const materialModules = [
   MatToolbarModule,
@@ -17,7 +20,10 @@ const materialModules = [
   MatIconModule,
   MatCardModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatInputModule,
+  MatChipsModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

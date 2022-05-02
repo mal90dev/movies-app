@@ -20,9 +20,8 @@ export class MoviesService {
     return this.http.get<Movie>(this.basePath + '/movies/' + movieId);
   }
 
-  // getError() {
-  //   const error = new HttpErrorResponse({ status: 400 });
-  //   return throwError(error) as any;
-  // }
+  createMovie(movie: Movie): Observable<Movie>{
+    return this.http.post<Movie>(this.basePath + '/movies', movie);
+  }
 
 }
