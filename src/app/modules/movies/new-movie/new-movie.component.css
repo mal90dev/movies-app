@@ -8,6 +8,7 @@
 .movie__form {
   min-width: 150px;
   width: 100%;
+  margin-top: 10%;
 }
 
 .movie__form-field {
@@ -16,4 +17,12 @@
 
 .new-movie__button {
   width: 90%;
+}
+
+.new-movie__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }

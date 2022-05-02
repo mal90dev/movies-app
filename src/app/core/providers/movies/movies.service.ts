@@ -24,4 +24,8 @@ export class MoviesService {
     return this.http.post<Movie>(this.basePath + '/movies', movie);
   }
 
+  updateMovie(movie: Movie, movieId: number): Observable<Movie>{
+    return this.http.put<Movie>(this.basePath + '/movies/' + movieId, movie);
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from '../../../core/models/company';
 import { ActorsService } from '../../../core/providers/actors/actors.service';
 import { Actor } from '../../../core/models/actor';
@@ -23,7 +23,8 @@ export class MovieDetailComponent {
   constructor( private activatedRoute: ActivatedRoute,
                private moviesService: MoviesService,
                private actorsService: ActorsService,
-               private companiesService: CompaniesService ) {
+               private companiesService: CompaniesService,
+               private router: Router ) {
     
     this.movieId = this.getIdParam();
     this.getMovie();
@@ -84,7 +85,7 @@ export class MovieDetailComponent {
   }
 
   handleEditMovie(): void {
-    console.log('Editar película');
+    this.router.navigate(['movies/edit', this.movie?.id]);
   }
 
   handleRemoveMovie(): void {

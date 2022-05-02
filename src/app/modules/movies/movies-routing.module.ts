@@ -16,8 +16,11 @@ const routes: Routes = [
   {
     path: 'new-movie',
     component: NewMovieComponent
+  },
+  {
+    path: 'edit/:id',
+    component: NewMovieComponent
   }
-
 ];
 
 @NgModule({
