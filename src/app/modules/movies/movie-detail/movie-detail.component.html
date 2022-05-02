@@ -19,14 +19,14 @@
       <div fxLayout="column" fxLayout.xs="row" fxFlex="10%"  class="movie__statistics">
   
         <div fxFlex="100%" fxLayoutAlign="left"  class="">
-          <h3>Puntuación: </h3>
+          <h3>{{ 'MOVIE-DETAIL.RATING' | translate }}</h3>
           <span class="movie__statistics-value">
             {{movie.imdbRating}}
           </span>
         </div>
   
         <div fxFlex="100%" fxLayoutAlign="left"  class="">
-          <h3>Duración: </h3>
+          <h3>{{ 'MOVIE-DETAIL.DURATION' | translate }}</h3>
           <span class="movie__statistics-value">
             {{movie.duration}}
           </span>
@@ -35,7 +35,7 @@
       </div>
   
       <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" class="movie__actors">
-        <h2 class="movie__title-item">Actores</h2>
+        <h2 class="movie__title-item">{{ 'MOVIE-DETAIL.ACTORS' | translate }}</h2>
         <hr>
         <div class="">
           <ul class="movie__list">
@@ -47,13 +47,13 @@
       </div>
     
       <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="movie__item">
-        <h2 class="movie__title-item">Estudio</h2>
+        <h2 class="movie__title-item">{{ 'MOVIE-DETAIL.STUDIE' | translate }}</h2>
         <hr/>
         <span class="card__genre">{{ movie.id | pipeCompany:companies }} </span>
       </div>
     
       <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="movie__genres">
-        <h2 class="movie__title-item">Géneros</h2>
+        <h2 class="movie__title-item">{{ 'MOVIE-DETAIL.GENRES' | translate }}</h2>
         <hr/>
         <ul class="movie__list">
           <li class="movie__list-item" *ngFor="let genre of movie.genre">
@@ -100,13 +100,13 @@
     <div fxLayout="column" fxFlex.xs="100%" fxFlex.md="60%" fxFlex="70%" class="movie__column">
       <div fxLayout="column" fxLayout.xs="row" fxFlex="10%"  class="movie__statistics">
         <div fxFlex="100%" fxLayoutAlign="left"  class="">
-          <h3>Puntuación: </h3>
+          <h3>{{ 'MOVIE-DETAIL.RATING' | translate }}</h3>
           <span class="movie__statistics-value">
             <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '50px'}"></ngx-skeleton-loader>
           </span>
         </div>
         <div fxFlex="100%" fxLayoutAlign="left"  class="">
-          <h3>Duración:  </h3>
+          <h3>{{ 'MOVIE-DETAIL.DURATION' | translate }}</h3>
           <span class="movie__statistics-value">
             <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '50px'}"></ngx-skeleton-loader>
           </span>
@@ -114,7 +114,7 @@
       </div>
       
       <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="">
-        <h2 class="movie__title-item">Actores</h2>
+        <h2 class="movie__title-item">{{ 'MOVIE-DETAIL.ACTORS' | translate }}</h2>
         <hr>
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>
@@ -122,13 +122,13 @@
       </div>
     
       <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="movie__item">
-        <h2 class="movie__title-item">Estudio</h2>
+        <h2 class="movie__title-item">{{ 'MOVIE-DETAIL.STUDIE' | translate }}</h2>
         <hr/>
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>
       </div>
     
       <div fxFlex="20%" fxLayout="column" fxLayoutAlign="left start" fxFlexFill class="movie__genres">
-        <h2 class="movie__title-item">Géneros</h2>
+        <h2 class="movie__title-item">{{ 'MOVIE-DETAIL.GENRES' | translate }}</h2>
         <hr/>
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>

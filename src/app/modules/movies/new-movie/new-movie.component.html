@@ -2,17 +2,17 @@
 <div class="new-movie">
   <form class="movie__form" [formGroup]="movieGroup" (ngSubmit)="onSubmit()">
     <mat-form-field class="movie__form-field">
-      <mat-label>Título</mat-label>
-      <input matInput placeholder="Título" formControlName="title">
+      <mat-label>{{ 'NEW-MOVIE.TITLE' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'NEW-MOVIE.TITLE' | translate }}" formControlName="title">
     </mat-form-field>
   
     <mat-form-field class="movie__form-field">
-      <mat-label>Póster (url)</mat-label>
-      <input matInput placeholder="Póster (url)" formControlName="poster">
+      <mat-label>{{ 'NEW-MOVIE.POSTER' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'NEW-MOVIE.POSTER' | translate }}" formControlName="poster">
     </mat-form-field>
 
     <mat-form-field class="movie__form-field">
-      <mat-label>Géneros</mat-label>
+      <mat-label>{{ 'NEW-MOVIE.GENRES' | translate }}</mat-label>
       <mat-chip-list #chipListGenre aria-label="Genre selection">
         <mat-chip *ngFor="let genre of genres" (removed)="removeGenre(genre)">
           {{genre.name}}
@@ -22,7 +22,7 @@
         </mat-chip>
         <input 
           formControlName="genre"
-          placeholder="Nuevo género"
+          placeholder="{{ 'NEW-MOVIE.GENRES' | translate }}"
           [matChipInputFor]="chipListGenre"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           matChipInputAddOnBlur="true"
@@ -31,7 +31,7 @@
     </mat-form-field>
 
     <mat-form-field class="movie__form-field">
-      <mat-label>Actores</mat-label>
+      <mat-label>{{ 'NEW-MOVIE.ACTORS' | translate }}</mat-label>
       <mat-chip-list #chipList aria-label="Actor selection">
         <mat-chip
           *ngFor="let actor of actors"
@@ -42,7 +42,7 @@
           </button>
         </mat-chip>
         <input
-          placeholder="Nuevo actor"
+          placeholder="{{ 'NEW-MOVIE.ACTORS' | translate }}"
           #actorInput
           formControlName="actors"
           [matAutocomplete]="auto"
@@ -58,23 +58,23 @@
     </mat-form-field>
 
     <mat-form-field class="movie__form-field">
-      <mat-label>Estudio</mat-label>
-      <input matInput placeholder="Estudio" formControlName="studio">
+      <mat-label>{{ 'NEW-MOVIE.STUDIE' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'NEW-MOVIE.STUDIE' | translate }}" formControlName="studio">
     </mat-form-field>
 
     <mat-form-field class="movie__form-field">
-      <mat-label>Año</mat-label>
-      <input matInput placeholder="Año" formControlName="year">
+      <mat-label>{{ 'NEW-MOVIE.YEAR' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'NEW-MOVIE.YEAR' | translate }}" formControlName="year">
     </mat-form-field>
 
     <mat-form-field class="movie__form-field">
-      <mat-label>Duración</mat-label>
-      <input matInput placeholder="Duración" formControlName="duration">
+      <mat-label>{{ 'NEW-MOVIE.DURATION' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'NEW-MOVIE.DURATION' | translate }}" formControlName="duration">
     </mat-form-field>
 
     <mat-form-field class="movie__form-field">
-      <mat-label>Puntuación</mat-label>
-      <input matInput placeholder="Puntuación" formControlName="rating">
+      <mat-label>{{ 'NEW-MOVIE.RATING' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'NEW-MOVIE.RATING' | translate }}" formControlName="rating">
     </mat-form-field>
 
     <button type="submit" [disabled]="showSpinner"

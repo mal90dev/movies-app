@@ -5,6 +5,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { RouterModule } from '@angular/router';
 import { ActorPipe } from './pipes/actor.pipe';
 import { CompanyPipe } from './pipes/company.pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 const pipes = [
   ActorPipe,
@@ -19,7 +20,8 @@ const pipes = [
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule
   ],
   exports: [
     NavbarComponent,

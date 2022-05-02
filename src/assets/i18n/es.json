@@ -1,0 +1,25 @@
+{
+  "NAME-APP": "Movies App",
+  "MENU": {
+    "MOVIES": "Películas",
+    "ACTORS": "Actores",
+    "STUDIES": "Estudios"
+  },
+  "MOVIE-DETAIL": {
+    "RATING": "Puntuación",
+    "DURATION": "Duración",
+    "ACTORS": "Actores",
+    "STUDIE": "Estudio",
+    "GENRES": "Géneros"
+  },
+  "NEW-MOVIE": {
+    "TITLE": "Título",
+    "POSTER": "Poster (URL)",
+    "GENRES": "Géneros",
+    "ACTORS": "Actores",
+    "STUDIE": "Estudio",
+    "YEAR": "Año",
+    "DURATION": "Duración",
+    "RATING": "Puntuación"
+  }
+}
