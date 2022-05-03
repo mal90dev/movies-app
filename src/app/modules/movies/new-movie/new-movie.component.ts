@@ -4,8 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { ActorsService } from '../../../core/providers/actors/actors.service';
@@ -40,10 +39,6 @@ export class NewMovieComponent implements OnInit {
     this.movieId = this.getIdParam();
     this.initFormGroup();
     this.getActors();
-    this.filteredActors = this.movieGroup.controls['actors'].valueChanges.pipe(
-      startWith(null),
-      map((actor: string | null) => (actor ? this._filter(actor) : this.allActors.slice())),
-    );
   }
 
   ngOnInit(): void {
@@ -240,11 +235,6 @@ export class NewMovieComponent implements OnInit {
     });
     this.actorInput.nativeElement.value = '';
     this.movieGroup.get('actors')!.patchValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.allActors.filter((actor: ActorSelect) => actor.fullName.toLowerCase().includes(filterValue));
   }
 
   addGenre(event: MatChipInputEvent): void {
