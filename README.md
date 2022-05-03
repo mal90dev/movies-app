@@ -4,24 +4,34 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para levantar el servidor lanzar el comando `ng serve` o `npm run start`, esto levantará la aplicación en `http://localhost:4200/`.
 
-## Code scaffolding
+También hay que ejecutar el servidor mock que se ha utilizado (json-server), esto se hace mediante el comando `npm run json-server`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para compilar el proyecto hay dos comandos:
+
+* `npm run build` , que compilará la aplicación con la configuración de development.
+* `npm run build:prod`, que compilará la aplicación con la configuración de production.
+
+Ambos generan los ficheros dentro del directorio `dist/`
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para ejecutar los test unitarios, hay dos comandos:
+
+* `npm run test` que ejecutará los comandos además de abrir una ventana del navegador.
+
+* `npm run test:coverage` que ejecutará los test generando un reporte de cobertura dentro del directorio `coverage`.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Los test unitarios también tienen dos comandos:
 
-## Further help
+* `npm run cypress:run` que ejecuta los test y muestra por consola el resultado.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* `npm run cypress:open`, abre una ventana en el navegador, desde la cuál puedes seleccionar el fichero de test que se quiere ejecutar.
+
+Si hay algún problema, dentro del directorio `cypress` se generarán reportes donde ver los errores que se han producido.
