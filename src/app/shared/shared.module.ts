@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ActorPipe } from './pipes/actor.pipe';
 import { CompanyPipe } from './pipes/company.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 
 const pipes = [
   ActorPipe,
@@ -21,7 +22,8 @@ const pipes = [
     CommonModule,
     RouterModule,
     MaterialModule,
-    TranslateModule
+    TranslateModule,
+    HttpClientModule
   ],
   exports: [
     NavbarComponent,

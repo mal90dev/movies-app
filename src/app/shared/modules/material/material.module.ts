@@ -39,4 +39,3 @@ const materialModules = [
   ]
 })
 export class MaterialModule { }
-

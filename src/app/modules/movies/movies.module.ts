@@ -5,13 +5,12 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { MoviesRoutingModule } from './movies-routing.module';
-import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+import { MaterialModule } from '../../shared/modules/material/material.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MovieCardSkeletonComponent } from './movie-card-skeleton/movie-card-skeleton.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-
 
 
 @NgModule({

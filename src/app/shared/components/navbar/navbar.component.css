@@ -10,16 +10,9 @@
 }
 
 .sidenav {
-  /* background-color: lightskyblue; */
   min-height: 93vh !important;
 }
 
 .sidenav__content {
-    /* font-size: 200%; */
     text-align: center;
-}
-
-/* Material styles */
-::ng-deep .mat-sidenav-content {
-  /* height: 93% !important; */
 }

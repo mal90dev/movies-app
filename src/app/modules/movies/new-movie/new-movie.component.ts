@@ -4,14 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { ActorsService } from '../../../core/providers/actors/actors.service';
 import { Movie } from '../../../core/models/movie';
 import { Actor } from '../../../core/models/actor';
 import { ActorSelect } from '../../../core/models/actorSelect';
 import { Genre } from '../../../core/models/genreSelect';
+import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 
 @Component({
