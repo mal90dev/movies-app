@@ -1,0 +1,41 @@
+.card {
+  max-width: 400px;
+}
+
+.card__header {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.card__title {
+  font-size: 18px;
+  min-height: 40px;
+}
+
+.card__content {
+  max-height: 600px;
+  max-width: 400px;
+  margin-bottom: 0px;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.card__img {
+  margin: 0px;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.card__genre {
+  font-size: 14px;
+}
+
+.card__footer {
+  padding-top: 15px;
+  min-height: 40px;
+}
+
+/* Material styles */
+::ng-deep .mat-card-header-text {
+  margin: 0px 5px !important;
+}

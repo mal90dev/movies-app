@@ -1,1 +1,32 @@
-<p>navbar works!</p>
+<ng-container>
+
+  <mat-toolbar class="toolbar">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <a mat-button class="toolbar__link" routerLink="/">
+      <span>{{ 'NAME-APP' | translate }}</span>
+    </a>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button class="toolbar__link" routerLink="/movies">{{ 'MENU.MOVIES' | translate }}</a>
+      <a mat-button class="toolbar__link" routerLink="/actors">{{ 'MENU.ACTORS' | translate }}</a>
+      <a mat-button class="toolbar__link" routerLink="/studios">{{ 'MENU.STUDIES' | translate }}</a>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav" fxFlexFill>
+    <mat-sidenav #sidenav mode="over" fxHide.gt-sm="true" role="navigation">
+      <div fxLayout="column">
+        <a mat-button class="toolbar__link" (click)="sidenav.toggle()" routerLink="/movies">{{ 'MENU.MOVIES' | translate }}</a>
+        <a mat-button class="toolbar__link" (click)="sidenav.toggle()" routerLink="/actors">{{ 'MENU.ACTORS' | translate }}</a>
+        <a mat-button class="toolbar__link" (click)="sidenav.toggle()" routerLink="/studios">{{ 'MENU.STUDIES' | translate }}</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav__content" fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+</ng-container>

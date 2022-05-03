@@ -1,0 +1,28 @@
+.new-movie {
+  width: 100%;
+  max-width: 500px;
+  margin: 0px auto;
+  padding-bottom: 15%;
+}
+
+.movie__form {
+  min-width: 150px;
+  width: 100%;
+  margin-top: 10%;
+}
+
+.movie__form-field {
+  width: 90%;
+}
+
+.new-movie__button {
+  width: 90%;
+}
+
+.new-movie__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}

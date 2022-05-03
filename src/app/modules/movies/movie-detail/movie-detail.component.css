@@ -1,0 +1,80 @@
+.movie {
+  padding: 5px;
+  font-size: 15px;
+}
+
+.movie__title {
+  margin-left: 5px;
+}
+
+.movie__column {
+  margin: 15px 0px 0px 15px;
+}
+
+.movie__statistics {
+  margin: 50px 0px 50px 0px;
+}
+
+hr {
+  width: 50%;               
+  background-color:gray;
+  margin-left: 0px;
+}
+
+.movie__title-item {
+  margin-bottom: 0px;
+}
+
+.movie__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.movie__list-item {
+  margin-bottom: 10px;
+}
+
+.movie__statistics-value {
+  margin-top: 4px;
+}
+
+.movie__genres {
+  padding-bottom: 40px;
+}
+
+.movie__actors {
+  margin-bottom: 20px;
+}
+
+.movie__icons-group {
+  bottom: 15%;
+  position: absolute;
+  display: inline-flex;
+}
+
+.movie__icon {
+  font-size: 40px;
+  margin-right: 50%;
+}
+
+.movie-skeleton__img {
+    width: 95% !important;
+    max-height: 100% !important;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .movie__icons-group {
+    right: 20%;
+    position: fixed;
+    display: flex;
+    bottom: 5%;
+  }
+
+  .movie__icon {
+    font-size: 40px;
+    margin-right: 30%;
+  }
+}

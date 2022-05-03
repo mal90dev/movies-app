@@ -1,1 +1,27 @@
-<p>movies-screen works!</p>
+<div class="content">
+
+  <div fxLayout="row wrap" fxLayoutGap="10px grid">
+
+    <ng-container
+      *ngIf="contentLoaded; then showMovies; else skeleton">
+    </ng-container>
+
+    <ng-template #showMovies>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies">
+        <app-movie-card [movie]="movie"></app-movie-card>
+      </div>
+      <div class="movie__icons-group">
+        <mat-icon (click)="handleCreateMovie()"
+          class="movie__icon" aria-hidden="false" aria-label="Example home icon">add_circle</mat-icon>
+      </div>
+    </ng-template>
+
+    <ng-template #skeleton>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let in of counter(4); let i = index">
+        <app-movie-card-skeleton></app-movie-card-skeleton>
+      </div>
+    </ng-template>
+
+  </div>
+  
+</div>
