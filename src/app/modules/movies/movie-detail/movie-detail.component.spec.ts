@@ -10,9 +10,13 @@ import { CompaniesService } from '../../../core/providers/companies/companies.se
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { MovieDetailComponent } from './movie-detail.component';
 import { SharedModule } from '../../../shared/shared.module';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Routes } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { MoviesScreenComponent } from '../movies-screen/movies-screen.component';
 
 describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;
@@ -27,6 +31,10 @@ describe('MovieDetailComponent', () => {
   let getMoviesSpy: any;
   let getCompaniesSpy: any;
   let getActorsSpy: any;
+  let moviesServiceSpy: any;
+  let companiesServiceSpy: any;
+  let actorsServiceSpy: any;
+
 
   mockMovieService = {
     id: 1,
@@ -86,22 +94,40 @@ describe('MovieDetailComponent', () => {
   ];
 
   beforeEach(async () => {
-    const moviesServiceSpy = jasmine.createSpyObj('MoviesService', ['getMovies', 'getMovieById']);
-    const companiesServiceSpy = jasmine.createSpyObj('ComaniesService', ['getCompanies']);
-    const actorsServiceSpy = jasmine.createSpyObj('MoviesService', ['getActors']);
+    moviesServiceSpy = jasmine.createSpyObj('MoviesService', ['getMovies', 'getMovieById', 'deleteMovie']);
+    companiesServiceSpy = jasmine.createSpyObj('ComaniesService', ['getCompanies']);
+    actorsServiceSpy = jasmine.createSpyObj('MoviesService', ['getActors']);
     getMoviesSpy = moviesServiceSpy.getMovieById.and.returnValue(of(mockMovieService));
     getCompaniesSpy = companiesServiceSpy.getCompanies.and.returnValue(of(mockCompaniesService));
     getActorsSpy = actorsServiceSpy.getActors.and.returnValue(of(mockActorsService));
 
+    const routes: Routes = [
+      {
+        path: 'movies/edit/:id',
+        component: MovieDetailComponent
+      },
+      {
+        path: 'movies',
+        component: MoviesScreenComponent
+      }
+    ];
+    
     await TestBed.configureTestingModule({
       declarations: [ 
         MovieDetailComponent
       ],
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         HttpClientTestingModule,
-        SharedModule
-      ],providers: [
+        SharedModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useClass: TranslateFakeLoader
+          }
+        })
+      ],
+      providers: [
         { provide: MoviesService, useValue: moviesServiceSpy },
         { provide: CompaniesService, useValue: companiesServiceSpy },
         { provide: ActorsService, useValue: actorsServiceSpy },
@@ -110,6 +136,9 @@ describe('MovieDetailComponent', () => {
           useValue: {snapshot: {params: {id: 1}}}
         },
       ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
     moviesService = TestBed.inject(MoviesService);
@@ -163,7 +192,7 @@ describe('MovieDetailComponent', () => {
       expect(spy).toHaveBeenCalledWith('error', 'Error al cargar los datos statusText testing', 'error');
     });
 
-   })
+  });
 
   describe('Tests in getActors()', () => { 
 
@@ -236,6 +265,35 @@ describe('MovieDetailComponent', () => {
       component.getCompanies();
       expect(spy).toHaveBeenCalledWith('error', 'Error al cargar los datos statusText testing', 'error');
     });
+
+  });
+
+  describe('Test in handleEditMovie', () => { 
+    it('should navigate with id to movies', () => {
+      spyOn(component, 'handleEditMovie').and.callThrough();
+      let element = fixture.debugElement.query(By.css('.movie__icon'));
+      element.triggerEventHandler('click', null);
+      expect(component.handleEditMovie).toHaveBeenCalled();
+    });
+  });
+
+  describe('Test in handleRemoveMovie', () => {
+
+    it('should remove the movie', () => {
+      const spy = spyOn(Swal, 'fire');
+      moviesServiceSpy.deleteMovie.and.returnValue(of(''));
+      component.handleRemoveMovie();
+      expect(spy).toHaveBeenCalledWith('success', 'Película eliminada', 'success');
+    });
+
+    it('should show error message on the UI', () => {
+      const spy = spyOn(Swal, 'fire');
+      const error = new HttpErrorResponse(
+        { status: 400, statusText: 'statusText testing' });
+      moviesServiceSpy.deleteMovie.and.returnValue(throwError(() => error));
+      component.handleRemoveMovie();
+      expect(spy).toHaveBeenCalledWith('error', 'Error al eliminar la película statusText testing', 'error');
+    })
 
   });
 

@@ -27,7 +27,6 @@ export class MovieDetailComponent {
                private router: Router ) {
     
     this.movieId = this.getIdParam();
-    this.actors = [];
     this.getMovie();
     this.getActors();
     this.getCompanies();
@@ -54,6 +53,7 @@ export class MovieDetailComponent {
   }
 
   getActors(): void {
+    this.actors = [];
     this.actorsService.getActors().subscribe({
       next: (actors: Actor[]) => {
         if ( actors?.length > 0 ) {
@@ -85,11 +85,11 @@ export class MovieDetailComponent {
   }
 
   handleEditMovie(): void {
-    this.router.navigate(['movies/edit', this.movie?.id]);
+    this.router.navigate(['movies/edit', this.movieId]);
   }
 
   handleRemoveMovie(): void {
-    this.moviesService.deleteMovie(this.movie?.id!).subscribe({
+    this.moviesService.deleteMovie(this.movieId).subscribe({
       next: () => {
         Swal.fire('success', 'Película eliminada', 'success');
         this.router.navigate(['movies']);

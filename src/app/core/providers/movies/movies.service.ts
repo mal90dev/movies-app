@@ -28,8 +28,8 @@ export class MoviesService {
     return this.http.put<Movie>(this.basePath + '/movies/' + movieId, movie);
   }
 
-  deleteMovie(movieId: number): Observable<Movie>{
-    return this.http.delete<Movie>(this.basePath + '/movies/' + movieId);
+  deleteMovie(movieId: number): Observable<boolean>{
+    return this.http.delete<boolean>(this.basePath + '/movies/' + movieId);
   }
 
 }
