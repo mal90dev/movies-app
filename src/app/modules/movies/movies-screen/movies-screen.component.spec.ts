@@ -8,6 +8,10 @@ import { Movie } from '../../../core/models/movie';
 import { of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
+import { Routes } from '@angular/router';
+import { NewMovieComponent } from '../new-movie/new-movie.component';
 
 describe('MoviesScreenComponent', () => {
   let component: MoviesScreenComponent;
@@ -15,7 +19,8 @@ describe('MoviesScreenComponent', () => {
   let mockMoviesService: Movie[];
   let moviesService: MoviesService;
   let getMoviesSpy: any;
-
+  let moviesServiceSpy: any;
+  
   mockMoviesService = [
     {
       id: 1,
@@ -40,13 +45,21 @@ describe('MoviesScreenComponent', () => {
   ];
 
   beforeEach(async () => {
-    const moviesServiceSpy = jasmine.createSpyObj('MoviesService', ['getMovies']);
+    moviesServiceSpy = jasmine.createSpyObj('MoviesService', ['getMovies']);
     getMoviesSpy = moviesServiceSpy.getMovies.and.returnValue(of(mockMoviesService));
 
+
+    const routes: Routes = [
+      {
+        path: 'movies/new-movie',
+        component: NewMovieComponent
+      }
+    ];
     await TestBed.configureTestingModule({
       declarations: [ MoviesScreenComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes(routes)
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
@@ -107,6 +120,16 @@ describe('MoviesScreenComponent', () => {
   it('should return array.length = 2', () => {
     const array = component.counter(2);
     expect(array.length).toBe(2);
+  });
+
+  
+  describe('Test in handleCreateMovie', () => { 
+    it('should navigate with id to movies', () => {
+      spyOn(component, 'handleCreateMovie').and.callThrough();
+      let element = fixture.debugElement.query(By.css('.movie__icon'));
+      element.triggerEventHandler('click', null);
+      expect(component.handleCreateMovie).toHaveBeenCalled();
+    });
   });
 
 });

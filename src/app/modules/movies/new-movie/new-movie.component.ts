@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -55,9 +55,9 @@ export class NewMovieComponent implements OnInit {
   }
 
   getMovie(): void {
-    this.movie = undefined;
+    this.movie = undefined;    
     this.moviesService.getMovieById(this.movieId).subscribe({
-      next: (movie: Movie) => {
+      next: (movie: Movie) => {        
         if ( movie ) {
           this.movie = movie;
         } else {
@@ -74,7 +74,7 @@ export class NewMovieComponent implements OnInit {
   }
 
   loadFormGroup(): void {
-    this.movieGroup.setValue({
+    this.movieGroup.patchValue({
       title: this.movie?.title,
       poster: this.movie?.poster,
       genre: '',
@@ -145,10 +145,10 @@ export class NewMovieComponent implements OnInit {
       this.updateMovie(movie);
     }
   }
-
+  
   createMovie(movie: Movie): void {
     this.moviesService.createMovie(movie).subscribe({
-      next: (movie: Movie) => {
+      next: (movie: Movie) => {  
         Swal.fire('Success', 'Película añadida correctamente', 'success');
         this.router.navigate(['movies']);
       },
@@ -215,7 +215,7 @@ export class NewMovieComponent implements OnInit {
   }
 
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();    
+    const value = (event.value || '').trim();      
     if (value) {
       this.actors.push({
         fullName: value,
@@ -223,28 +223,27 @@ export class NewMovieComponent implements OnInit {
       });
     }
     event.chipInput!.clear();
-    this.movieGroup.get('actors')!.setValue(null);
+    this.movieGroup.get('actors')!.patchValue(null);
   }
 
-  remove(actor: ActorSelect): void {
+  remove(actor: ActorSelect): void {   
     const index = this.actors.indexOf(actor);
     if (index >= 0) {
       this.actors.splice(index, 1);
     }
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void {   
+  selected(event: MatAutocompleteSelectedEvent): void {       
     this.actors.push({
         fullName: event.option.viewValue,
         id: event.option.value
     });
     this.actorInput.nativeElement.value = '';
-    this.movieGroup.get('actors')!.setValue(null);
+    this.movieGroup.get('actors')!.patchValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    console.log(this.allActors.filter((actor: ActorSelect) => actor.fullName.toLowerCase().includes(filterValue)));
     return this.allActors.filter((actor: ActorSelect) => actor.fullName.toLowerCase().includes(filterValue));
   }
 
