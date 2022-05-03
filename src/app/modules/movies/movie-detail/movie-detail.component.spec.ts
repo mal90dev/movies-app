@@ -1,7 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of, throwError } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Routes } from '@angular/router';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Company } from '../../../core/models/company';
 import { Actor } from '../../../core/models/actor';
 import { Movie } from '../../../core/models/movie';
@@ -10,13 +14,9 @@ import { CompaniesService } from '../../../core/providers/companies/companies.se
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { MovieDetailComponent } from './movie-detail.component';
 import { SharedModule } from '../../../shared/shared.module';
-import { ActivatedRoute, Routes } from '@angular/router';
-import Swal from 'sweetalert2';
-import { HttpErrorResponse } from '@angular/common/http';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { MoviesScreenComponent } from '../movies-screen/movies-screen.component';
+import { of, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;

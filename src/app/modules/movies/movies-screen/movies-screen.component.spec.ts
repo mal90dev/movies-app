@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MoviesScreenComponent } from './movies-screen.component';
+import { Routes } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MoviesService } from '../../../core/providers/movies/movies.service';
-import { Movie } from '../../../core/models/movie';
-import { of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import Swal from 'sweetalert2';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-import { Routes } from '@angular/router';
+import { MoviesScreenComponent } from './movies-screen.component';
+import { MoviesService } from '../../../core/providers/movies/movies.service';
+import { Movie } from '../../../core/models/movie';
 import { NewMovieComponent } from '../new-movie/new-movie.component';
+import { of, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 describe('MoviesScreenComponent', () => {
   let component: MoviesScreenComponent;

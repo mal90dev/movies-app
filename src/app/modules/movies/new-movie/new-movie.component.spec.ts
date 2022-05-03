@@ -7,20 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { of, throwError } from 'rxjs';
 import { Actor } from '../../../core/models/actor';
 import { Movie } from '../../../core/models/movie';
 import { ActorsService } from '../../../core/providers/actors/actors.service';
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { MaterialModule } from '../../../shared/modules/material/material.module';
 import { SharedModule } from '../../../shared/shared.module';
-import Swal from 'sweetalert2';
-
 import { NewMovieComponent } from './new-movie.component';
 import { MoviesScreenComponent } from '../movies-screen/movies-screen.component';
 import { ActorSelect } from '../../../core/models/actorSelect';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Genre } from 'src/app/core/models/genreSelect';
+import { Genre } from '../../../core/models/genreSelect';
+import { of, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 describe('NewMovieComponent', () => {
   let component: NewMovieComponent;

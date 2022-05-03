@@ -12,7 +12,7 @@ export class CompaniesService {
 
   constructor(private http: HttpClient) { }
 
-  getCompanies(): Observable<Company[]>{
+  getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(this.basePath + '/companies');
   }
 

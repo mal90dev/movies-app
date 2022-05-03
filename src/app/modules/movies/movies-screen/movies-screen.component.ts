@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { MoviesService } from '../../../core/providers/movies/movies.service';
 import { Movie } from '../../../core/models/movie';
+import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies-screen',

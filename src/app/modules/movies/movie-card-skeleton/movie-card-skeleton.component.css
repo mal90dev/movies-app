@@ -39,8 +39,3 @@
 ::ng-deep .mat-card-header-text {
   margin: 0px 5px !important;
 }
-
-/* ngx-skeleton-loader styles */
-:host >>> ngx-skeleton-loader .loader {
-  margin-bottom: 0px;
-}

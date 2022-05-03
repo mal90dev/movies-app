@@ -3,6 +3,7 @@
 </ng-container>
 
 <ng-template #showMovie>
+  
   <div fxLayout="row" fxLayout.xs="column" class="movie">
 
     <div fxLayout="column" fxFlex="30%" fxFlex.md="40%" fxFlex.xs="100%" class="movie__column">
@@ -64,13 +65,13 @@
     </div>
   
   </div>
+
   <div class="movie__icons-group">
     <mat-icon (click)="handleEditMovie()" id="edit-movie"
       class="movie__icon" aria-hidden="false" aria-label="Editar">mode_edit</mat-icon>
     <mat-icon (click)="handleRemoveMovie()" id="remove-movie"
       class="movie__icon" aria-hidden="false" aria-label="Eliminar">delete</mat-icon>
   </div>
-
 
 </ng-template>
 
@@ -98,6 +99,7 @@
     </div>
   
     <div fxLayout="column" fxFlex.xs="100%" fxFlex.md="60%" fxFlex="70%" class="movie__column">
+
       <div fxLayout="column" fxLayout.xs="row" fxFlex="10%"  class="movie__statistics">
         <div fxFlex="100%" fxLayoutAlign="left"  class="">
           <h3>{{ 'MOVIE-DETAIL.RATING' | translate }}</h3>
@@ -105,6 +107,7 @@
             <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '50px'}"></ngx-skeleton-loader>
           </span>
         </div>
+
         <div fxFlex="100%" fxLayoutAlign="left"  class="">
           <h3>{{ 'MOVIE-DETAIL.DURATION' | translate }}</h3>
           <span class="movie__statistics-value">
@@ -134,8 +137,11 @@
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>
         <ngx-skeleton-loader count="1" appearance="line" animation="progress" [theme]="{'height': '20px', 'width': '100px'}"></ngx-skeleton-loader>
       </div>
+
     </div>
+
   </div>
+
   <div class="movie__icons-group">
     <mat-icon class="movie__icon" aria-hidden="false" aria-label="Example home icon">mode_edit</mat-icon>
     <mat-icon class="movie__icon" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
