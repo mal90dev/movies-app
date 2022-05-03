@@ -12,7 +12,8 @@
     "lint": "ng lint",
     "compodoc": "npx compodoc -p tsconfig.doc.json",
     "cypress:run": "npx cypress run",
-    "cypress:open": "npx cypress open"
+    "cypress:open": "npx cypress open",
+    "json-server": "json-server --watch ./server/db.json --delay 1000"
   },
   "private": true,
   "dependencies": {
